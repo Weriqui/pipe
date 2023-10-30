@@ -3,3 +3,4 @@ requests
 flask-cors
 datetime
 pytz
+gunicorn==20.0.4
