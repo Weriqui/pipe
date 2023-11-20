@@ -147,6 +147,7 @@ def pesquisa(numero):
         cnpj = {'cnpj':response.json()['data']["c1dffa1d3f6d26c2472b9d6b075032089b3b0805"]}
 
         titulo = individuo['organizacao']
+        titulo = titulo.replace('&','%')
         idpessoa = individuo['id']
         url = f"https://api.pipedrive.com/v1/leads/search?term={titulo}&person_id={idpessoa}&api_token={token}"
 
@@ -213,6 +214,7 @@ def pesquisa(numero):
         cnpj = {'cnpj':response.json()['data']["c1dffa1d3f6d26c2472b9d6b075032089b3b0805"]}
 
         titulo = individuo['organizacao']
+        titulo = titulo.replace('&','%')
         idpessoa = individuo['id']
         url = f"https://api.pipedrive.com/v1/leads/search?term={titulo}&person_id={idpessoa}&api_token={token}"
 
