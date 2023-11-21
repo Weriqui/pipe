@@ -41,7 +41,8 @@ produto = {19:"TAX SN",
     90:"PS CORP",
     95:"FRANQUIA (CONT.)",
     98:"PS CORP (DÍVIDA)",
-    100:"Parcela Reduzida"
+    100:"Parcela Reduzida",
+    101:"Transação SP"
 }
 
 def notas(mensagem, idleed, org_id, idpessoa):
