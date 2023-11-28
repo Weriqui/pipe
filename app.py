@@ -46,7 +46,7 @@ produto = {19:"TAX SN",
 }
 
 def notas(mensagem, idleed, org_id, idpessoa):
-    token = "fb1912394dd41792e43c0b2d71a40d4e9dccf6ac"
+    token = "6c7d502747be67acc199b483803a28a0c9b95c09"
     url = f"https://api.pipedrive.com/v1/notes?api_token={token}"
     # Obtém a data e hora atual no fuso horário UTC
     data_hora_atual = datetime.datetime.utcnow()
@@ -88,7 +88,7 @@ def notas(mensagem, idleed, org_id, idpessoa):
     return response.status_code
 
 def etiquetaPessoa(idpessoa, responsavel, marcacao=None):
-    token = "fb1912394dd41792e43c0b2d71a40d4e9dccf6ac"
+    token = "6c7d502747be67acc199b483803a28a0c9b95c09"
     url = f"https://api.pipedrive.com/v1/persons/{idpessoa}?api_token={token}"
 
     if marcacao == None:
@@ -114,7 +114,7 @@ def etiquetaPessoa(idpessoa, responsavel, marcacao=None):
     return response.status_code
 
 def pesquisa(numero):
-    token = token = "fb1912394dd41792e43c0b2d71a40d4e9dccf6ac"
+    token = token = "6c7d502747be67acc199b483803a28a0c9b95c09"
     url = f"https://api.pipedrive.com/v1/persons/search?term={numero}&start=0&api_token={token}"
 
     payload = {}
@@ -174,7 +174,7 @@ def pesquisa(numero):
         lead = dict(response.json())
         lead = {'titulo-lead':lead['data']['title'], 'produto':produto[int(lead['data']['5fca6336de210f847b78ce5fd7de950530e26e94'])]}
 
-        url = f"https://api.pipedrive.com/v1/persons/{idpessoa}?api_token=fb1912394dd41792e43c0b2d71a40d4e9dccf6ac"
+        url = f"https://api.pipedrive.com/v1/persons/{idpessoa}?api_token=6c7d502747be67acc199b483803a28a0c9b95c09"
 
         payload = {}
         headers = {
@@ -242,7 +242,7 @@ def pesquisa(numero):
           lead = dict(response.json())
           lead = {'titulo-lead':lead['data']['title'], 'produto':produto[int(lead['data']['5fca6336de210f847b78ce5fd7de950530e26e94'])]}
 
-          url = f"https://api.pipedrive.com/v1/persons/{idpessoa}?api_token=fb1912394dd41792e43c0b2d71a40d4e9dccf6ac"
+          url = f"https://api.pipedrive.com/v1/persons/{idpessoa}?api_token=6c7d502747be67acc199b483803a28a0c9b95c09"
 
           payload = {}
           headers = {
