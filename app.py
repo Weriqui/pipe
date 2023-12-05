@@ -87,7 +87,7 @@ def notas(mensagem, idleed, org_id, idpessoa):
     response = requests.request("POST", url, headers=headers, data=payload)
     return response.status_code
 
-def etiquetaPessoa(idpessoa, responsavel, marcacao=None, cliente):
+def etiquetaPessoa(idpessoa, responsavel, cliente, marcacao=None):
     token = "6c7d502747be67acc199b483803a28a0c9b95c09"
     url = f"https://api.pipedrive.com/v1/persons/{idpessoa}?api_token={token}"
 
@@ -294,9 +294,9 @@ def process_request_alter():
         nota = 200
         
     if marcacao!="00":
-        etiqueta = etiquetaPessoa(idpessoa, responsavel, marcacao,cliente)
+        etiqueta = etiquetaPessoa(idpessoa, responsavel,cliente, marcacao)
     else:
-        etiqueta = etiquetaPessoa(idpessoa, responsavel, None, cliente)
+        etiqueta = etiquetaPessoa(idpessoa, responsavel, cliente)
     
 
     return jsonify({'nota':nota, 'etiqueta':etiqueta})
