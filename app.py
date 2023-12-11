@@ -73,7 +73,7 @@ def notas(mensagem, idleed, org_id, idpessoa):
       "deal_id": None,
       "person_id": idpessoa,
       "org_id": org_id,
-      "user_id": 14172500,
+      "user_id": 14284568,
       "add_time": time,
       "pinned_to_lead_flag": False,
       "pinned_to_deal_flag": False,
