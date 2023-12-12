@@ -89,21 +89,23 @@ def notas(mensagem, idleed, org_id, idpessoa):
     response = requests.request("POST", url, headers=headers, data=payload)
     return response.status_code
 
-def etiquetaPessoa(idpessoa, responsavel, cliente, marcacao=None):
+def etiquetaPessoa(idpessoa, responsavel, cliente,temperatura, marcacao=None):
     token = "6c7d502747be67acc199b483803a28a0c9b95c09"
     url = f"https://api.pipedrive.com/v1/persons/{idpessoa}?api_token={token}"
 
     if marcacao == None:
         payload = json.dumps({
         "2f006f9e3261b17e2026b52e0e67db917ff748f0":responsavel,
-        "8b162a7e5ddc7cc76488dd659072a92f0e0d496d": cliente
+        "8b162a7e5ddc7cc76488dd659072a92f0e0d496d": cliente,
+        "11544ee8afac3123b2da0613437117819660dd19": temperatura
         })
     
     else:
         payload = json.dumps({
         "cb6c573810116f88e186b47c471deee0d35c943d": marcacao,
         "2f006f9e3261b17e2026b52e0e67db917ff748f0":responsavel,
-        "8b162a7e5ddc7cc76488dd659072a92f0e0d496d": cliente
+        "8b162a7e5ddc7cc76488dd659072a92f0e0d496d": cliente,
+        "11544ee8afac3123b2da0613437117819660dd19": temperatura
         })
         
     headers = {
@@ -290,15 +292,16 @@ def process_request_alter():
     marcacao = data['marcacao']
     responsavel = data['assessor'] 
     cliente = data['cliente'] if 'cliente' in data.keys() else '105'
+    temperatura = data['temperatura']
     if mensagem != '':
         nota = notas(mensagem, idleed, org_id, idpessoa)
     else:
         nota = 200
         
     if marcacao!="00":
-        etiqueta = etiquetaPessoa(idpessoa, responsavel,cliente, marcacao)
+        etiqueta = etiquetaPessoa(idpessoa, responsavel, cliente, temperatura, marcacao)
     else:
-        etiqueta = etiquetaPessoa(idpessoa, responsavel, cliente)
+        etiqueta = etiquetaPessoa(idpessoa, responsavel, cliente, temperatura)
     
 
     return jsonify({'nota':nota, 'etiqueta':etiqueta})
